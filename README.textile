@@ -1,0 +1,35 @@
+h2. SWFAddress is a small but powerful library that provides deep linking for Flash and Ajax.
+
+You can find more information here: http://www.asual.com/swfaddress/
+
+Alexandru Petrescu removed the SWFAddressEvent class and updated the SWFAddress to use signals instead. You can find it here:
+http://www.kilometer0.com/blog/2010/03/02/swfaddress-as3signals-robotlegs/
+
+h3. Update
+
+This is just a update from 2.4 v to 2.5.
+
+h3. Dependencies 
+
+"as3-signals":https://github.com/robertpenner/as3-signals
+
+h2. License
+
+Permission is hereby granted, free of charge, to any person obtaining a 
+copy of this software and associated documentation files 
+(the "Software"), to deal in the Software without restriction, 
+including without limitation the rights to use, copy, modify, merge, 
+publish, distribute, sublicense, and/or sell copies of the Software, 
+and to permit persons to whom the Software is furnished to do so, 
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included 
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS 
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY 
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE 
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
