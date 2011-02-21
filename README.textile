@@ -1,3 +1,4 @@
+
 h2. SWFAddress is a small but powerful library that provides deep linking for Flash and Ajax.
 
 You can find more information here: http://www.asual.com/swfaddress/

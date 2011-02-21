@@ -132,7 +132,7 @@ package {
 			_initChange = true;
 		}
 
-		private  function _setValue(value : String, internal_change : Boolean) : void {
+		private  function _setValue(value : String, internal_change : Boolean=true) : void {
 			if (value == 'undefined' || value == null) value = '';
 			if (_value == value && _init) return;
 			if (!_initChange) return;
