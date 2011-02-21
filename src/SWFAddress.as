@@ -11,6 +11,7 @@
  * @author Piotr Zema <http://felixz.marknaegeli.com>
  * @author Alex Petrescu <http://www.kilometer0.com>
  * @author Antonio Miranda <http://www.complexresponse.com>
+ * @author Nahuel Scotti
  */
 package {
 	import org.osflash.signals.Signal;
@@ -40,25 +41,25 @@ package {
 		/**
 		 * Dispatched when <code>SWFAddress</code> initializes.
 		 */
-		public var init : Signal;
+		public var onInit : Signal;
 		/**
 		 * Dispatched when any value change.
 		 */
-		public var change : Signal;
+		public var onChange : Signal;
 		/**
 		 * Dispatched when value was changed by Flash.
 		 */
-		public var internalChange : Signal;
+		public var onInternalChange : Signal;
 		/**
 		 * Dispatched when value was changed by Browser.
 		 */
-		public var externalChange : Signal;
+		public var onExternalChange : Signal;
 
 		public function SWFAddress() {
-			init = new Signal();
-			change = new Signal();
-			internalChange = new Signal();
-			externalChange = new Signal();
+			onInit = new Signal();
+			onChange = new Signal();
+			onInternalChange = new Signal();
+			onExternalChange = new Signal();
 		}
 
 		private  function _initialize() : Boolean {
@@ -82,12 +83,12 @@ package {
 		protected var _initializer : Boolean = _initialize();
 
 		private  function _check(event : TimerEvent) : void {
-			if ((init.numListeners > 0) && !_init) {
+			if ((onInit.numListeners > 0) && !_init) {
 				_setValueInit(_getValue());
 				_init = true;
 			}
 
-			if (change.numListeners > 0 || externalChange.numListeners > 0) {
+			if (onChange.numListeners > 0 || onExternalChange.numListeners > 0) {
 				_initTimer.stop();
 				_init = true;
 				_setValueInit(_getValue());
@@ -124,10 +125,10 @@ package {
 		private  function _setValueInit(value : String) : void {
 			_value = value;
 			if (!_init) {
-				init.dispatch();
+				onInit.dispatch();
 			} else {
-				change.dispatch();
-				externalChange.dispatch();
+				onChange.dispatch();
+				onExternalChange.dispatch();
 			}
 			_initChange = true;
 		}
@@ -139,11 +140,11 @@ package {
 			_value = value;
 			if (!_init) {
 				_init = true;
-				init.dispatch();
+				onInit.dispatch();
 			}
-			change.dispatch();
-			if (internal_change) internalChange.dispatch();
-			else externalChange.dispatch();
+			onChange.dispatch();
+			if (internal_change) onInternalChange.dispatch();
+			else onExternalChange.dispatch();
 		}
 
 		private  function _callQueue(event : TimerEvent) : void {
@@ -380,8 +381,8 @@ package {
 			_call('setValue', value);
 			if (_init) {
 				if (_autoUpdate || _updating) {
-					change.dispatch();
-					internalChange.dispatch();
+					onChange.dispatch();
+					onInternalChange.dispatch();
 				}
 			} else {
 				_initChanged = true;
